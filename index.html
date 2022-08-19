@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./assets/css/app.min.css">
+	<title>Список задач</title>
+</head>
+<body>
+	<div class="app">
+		<h1 class="title">Список задач</h1>
+
+		<div class="tasks">
+			<form class="tasks-form" action="#">
+				<input class="tasks-form__input" type="text"  placeholder="Новая задача">
+				<button class="tasks-form__button">Добавить</button>
+			</form>
+
+			<ul class="tasks-list">
+				<li class="tasks-list__item">
+					<form class="tasks-list__form" action="#" id="1">
+						<input class="tasks-list__status" type="checkbox">
+						<input class="tasks-list__input" type="text" value="Пример задачи" disabled>
+						<button class="tasks-list__button" type="button">Редактировать</button>
+					</form>
+				</li>
+				<li class="tasks-list__item">
+					<form class="tasks-list__form" action="#" id="1">
+						<input class="tasks-list__status" type="checkbox">
+						<input class="tasks-list__input" type="text" value="Пример задачи" disabled>
+						<button class="tasks-list__button" type="button">Редактировать</button>
+					</form>
+				</li>
+				<li class="tasks-list__item">
+					<form class="tasks-list__form" action="#" id="1">
+						<input class="tasks-list__status" type="checkbox">
+						<input class="tasks-list__input" type="text" value="Пример задачи">
+						<button class="tasks-list__button" type="button">Сохранить</button>
+					</form>
+				</li>
+			</ul>
+
+			<div class="tasks-tools">
+				<button class="tasks-tools__button">Выполнено</button>
+				<button class="tasks-tools__button">Удалить</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="./assets/js/app.js"></script>
+</body>
+</html>

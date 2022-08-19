@@ -1,0 +1,118 @@
+@use 'sass:math';
+@import './libs/functions';
+@import './libs/mixins';
+@import './libs/reset';
+@import './modules/fonts';
+@import './modules/vars';
+
+body {
+	background-color: var(--color-bg-primary);
+	font-family: var(--font-regular);
+	color: var(--color-textr-primary);
+}
+
+
+.app {
+	display: grid;
+	max-width: rem(540);
+	margin: 0 auto;
+	padding: 15vh rem(10) 5vh;
+	gap: rem(30) 0;
+}
+
+.title {
+	font-family: var(--font-medium);
+	font-size: rem(40);
+	font-weight: 500;
+	text-align: center;
+}
+
+.tasks {
+	display: grid;
+	gap: rem(20);
+	padding: rem(20);
+	background-color: var(--color-bg-secondary);
+	border-radius: rem(8);
+	box-shadow: 0 0 rem(16) rgba($color: #6246ea, $alpha: 0.08);
+}
+
+.tasks-form {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 0 rem(20);
+	// .tasks-form__input
+	&__input {
+		padding: rem(8);
+		border: 0;
+		border-radius: rem(4);
+		background-color: var(--color-bg-secondary);
+		box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
+		font-size: rem(16);
+		&:focus {
+			outline: rem(2) var(--color-accent-primary) solid;
+		}
+	}
+	// .tasks-form__button
+	&__button {
+		padding: rem(8) rem(16);
+		border: 0;
+		border-radius: rem(4);
+		background-color: var(--color-accent-primary);
+		box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
+		font-family: var(--font-medium);
+		font-size: rem(14);
+		font-weight: 500;
+		color: var(--color-text-secondary);
+		transition: background-color 0.2s ease 0s;
+		&:hover {
+			background-color: var(--color-accent-primary-hover);
+		}
+		&:focus-visible {
+			outline: rem(2) var(--color-text-primary) solid;
+		}
+	}
+}
+
+.tasks-list {
+	box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
+	// .tasks-list__item
+	&__item {
+		padding: rem(5) rem(20);
+		&:not(:last-child) {
+			border-bottom: rem(1) rgba($color: #6246ea, $alpha: 0.1) solid;
+		}
+	}
+	// .tasks-list__form
+	&__form {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		gap: 0 rem(20);
+	}
+	// .tasks-list__status
+	&__status {
+	}
+	// .tasks-list__input
+	&__input {
+		padding: rem(5);
+		border: 0;
+		border-radius: rem(4);
+		font-size: rem(16);
+		&:focus {
+			outline: rem(2) var(--color-accent-primary) solid;
+		}
+		&:disabled {
+			border: 0;
+			background: transparent;
+			color: var(--color-textr-primary);
+		}
+	}
+	// .tasks-list__button
+	&__button {
+	}
+}
+
+.tasks-tools {
+	// .tasks-tools__button
+	&__button {
+	}
+}
