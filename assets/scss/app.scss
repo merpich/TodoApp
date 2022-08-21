@@ -113,11 +113,66 @@ body {
 	}
 	// .tasks-list__button
 	&__button {
+		display: flex;
+		align-items: center;
+		min-height: rem(40);
+		padding: rem(10) rem(20);
+		border: 0;
+		background: transparent;
+		&:hover .tasks-list__icon {
+			stroke: var(--color-accent-secondary);
+		}
+	}
+	// .tasks-list__icon
+	&__icon {
+		stroke: var(--color-text-primary);
+		transition: stroke 0.2s ease 0s;
+		// .tasks-list__icon_edit
+		&_edit {
+			width: rem(18);
+			height: rem(18);
+		}
+		// .tasks-list__icon_save
+		&_save {
+			width: rem(18);
+			height: rem(14);
+		}
 	}
 }
 
 .tasks-tools {
+	display: flex;
+	justify-content: flex-end;
 	// .tasks-tools__button
 	&__button {
+		display: flex;
+		align-items: center;
+		min-height: rem(40);
+		padding: rem(10);
+		border: 0;
+		background: transparent;
+		&:hover {
+			& .tasks-tools__icon_done {
+				stroke: var(--color-accent-primary);
+			}
+			& .tasks-tools__icon_delete {
+				stroke: var(--color-accent-secondary);
+			}
+		}
+	}
+	// .tasks-tools__icon
+	&__icon {
+		stroke: var(--color-text-primary);
+		transition: stroke 0.2s ease 0s;
+		// .tasks-tools__icon_done
+		&_done {
+			width: rem(26);
+			height: rem(14);
+		}
+		// .tasks-tools__icon_delete
+		&_delete {
+			width: rem(18);
+			height: rem(18);
+		}
 	}
 }
