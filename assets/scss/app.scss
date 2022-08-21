@@ -42,6 +42,7 @@ body {
 	gap: 0 rem(20);
 	// .tasks-form__input
 	&__input {
+		width: 100%;
 		padding: rem(8);
 		border: 0;
 		border-radius: rem(4);
@@ -74,10 +75,11 @@ body {
 }
 
 .tasks-list {
+	border-radius: rem(4);
 	box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
 	// .tasks-list__item
 	&__item {
-		padding: rem(5) rem(20);
+		padding: rem(5) 0;
 		&:not(:last-child) {
 			border-bottom: rem(1) rgba($color: #6246ea, $alpha: 0.1) solid;
 		}
@@ -93,10 +95,13 @@ body {
 	}
 	// .tasks-list__input
 	&__input {
+		width: 100%;
 		padding: rem(5);
 		border: 0;
 		border-radius: rem(4);
-		font-size: rem(16);
+		font-family: var(--font-medium);
+		font-size: rem(18);
+		font-weight: 500;
 		&:focus {
 			outline: rem(2) var(--color-accent-primary) solid;
 		}
