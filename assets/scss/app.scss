@@ -100,7 +100,7 @@ body {
 		border: 0;
 		border-radius: rem(4);
 		font-family: var(--font-medium);
-		font-size: rem(18);
+		font-size: rem(16);
 		font-weight: 500;
 		&:focus {
 			outline: rem(2) var(--color-accent-primary) solid;
@@ -143,6 +143,7 @@ body {
 .tasks-tools {
 	display: flex;
 	justify-content: flex-end;
+	margin: rem(-10) 0;
 	// .tasks-tools__button
 	&__button {
 		display: flex;
