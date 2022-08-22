@@ -17,6 +17,7 @@ const groupCssMedia = require('gulp-group-css-media-queries')
 const paths = {
 	source: './',
 	html: './index.html',
+	js: './assets/js/**/*.js',
 	css: './assets/css/',
 	scss: './assets/scss/**/*.scss'
 }
@@ -43,12 +44,18 @@ const watchHtml = () => {
 		.pipe(browserSync.reload({ stream: true }))
 }
 
+const watchScripts = () => {
+	return gulp.src(paths.js)
+		.pipe(browserSync.reload({ stream: true }))
+}
+
 /**
  * Watch changes
  */
  const watch = () => {
 	gulp.watch(paths.scss, convertSass)
 	gulp.watch(paths.html, watchHtml)
+	gulp.watch(paths.js, watchScripts)
 }
 
 /**
@@ -62,6 +69,6 @@ const serve = () => {
 }
 
 exports.default = gulp.series(
-	gulp.parallel(convertSass, watchHtml),
+	gulp.parallel(convertSass, watchHtml, watchScripts),
 	gulp.parallel(serve, watch)
 )
