@@ -1,8 +1,5 @@
 [*]
 indent_style = tab
+indent_size = 4
 insert_final_newline = true
 end_of_line = lf
-
-[.js, .html, .css, .scss, .json]
-indent_size = 4
-trim_trailing_whitespace = true
