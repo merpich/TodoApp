@@ -13,9 +13,13 @@ const addNewTask = (event) => {
 	const listOfTasks = getData()
 	const listOfTasksCopy = listOfTasks.slice()
 
-	showTask(newTask, tasksList)
-
 	listOfTasksCopy.push(newTask)
+
+	const id = listOfTasksCopy.length - 1
+	const task = listOfTasksCopy[id]
+
+	showTask(task, id, tasksList)
+
 	localStorage.setItem('tasks', JSON.stringify(listOfTasksCopy))
 	newTaskForm.reset()
 	newTaskInput.select()

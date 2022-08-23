@@ -1,5 +1,7 @@
-const showTask = (task, listOfTasks) => {
+const showTask = (task, id,  listOfTasks) => {
 	const taskElement = document.createElement('li')
+	const nameInpit = 'task-' + id
+
 	taskElement.classList.add('tasks-list__item')
 	taskElement.innerHTML = 
 		`<form class="tasks-list__form" action="#">
@@ -9,7 +11,7 @@ const showTask = (task, listOfTasks) => {
 					<use xlink:href="./assets/icons/sprites.svg#check"></use>
 				</svg>
 			</label>
-			<input class="tasks-list__input" type="text" name=${task} value="${task}" disabled>
+			<input class="tasks-list__input" type="text" name=${nameInpit} value="${task}" disabled>
 			<button class="tasks-list__button" type="button">
 				<svg class="tasks-list__icon tasks-list__icon_edit">
 					<use xlink:href="./assets/icons/sprites.svg#edit"></use>
