@@ -1,22 +1,15 @@
-import { showTask } from "./modules/showTask.js"
-import { getData, addNewTask } from "./modules/utilities.js"
+import { showTask } from "./libs/showTask.js"
+import { getData } from "./libs/utilities.js"
+import { addNewTask } from "./modules/addNewTask.js"
 
 const newTaskForm = document.querySelector('.tasks-form')
-const newTaskInput = document.querySelector('.tasks-form__input')
 const tasksList = document.querySelector('.tasks-list')
 
 try {
 	const listOfTasks = getData()
 
 	listOfTasks.forEach((task) => showTask(task, tasksList))
-	newTaskForm.addEventListener('submit', (event) => {
-		event.preventDefault()
-		const formData = new FormData(newTaskForm)
-		
-		addNewTask(formData, tasksList)
-		newTaskForm.reset()
-		newTaskInput.select()
-	})
+	newTaskForm.addEventListener('submit', (event) => addNewTask(event))
 } catch(error) {
 	console.log(error)
 }
