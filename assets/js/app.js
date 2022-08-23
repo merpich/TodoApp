@@ -8,7 +8,7 @@ const tasksList = document.querySelector('.tasks-list')
 try {
 	const listOfTasks = getData()
 
-	listOfTasks.forEach((task, id) => showTask(task, id, tasksList))
+	listOfTasks.forEach((task) => showTask(task, tasksList))
 	newTaskForm.addEventListener('submit', (event) => addNewTask(event))
 } catch(error) {
 	console.log(error)
