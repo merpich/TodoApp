@@ -1,4 +1,5 @@
-import { getData, setData, updateTaskForm } from "../libs/utilities.js"
+import { getData, setData } from "../libs/utilities.js"
+import { updateTaskForm } from "../libs/updateTaskForm.js"
 
 const updateTask = (button) => {
 
