@@ -19,6 +19,7 @@ const showTask = (task,  listOfTasksElement) => {
 		</form>`
 
 	listOfTasksElement.append(taskElement)
+	listOfTasksElement.style.display = 'block'
 
 	return taskElement
 }
