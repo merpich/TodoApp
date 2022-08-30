@@ -1,5 +1,6 @@
 import { getData } from "../libs/utilities.js"
 import { showTask } from "../libs/showTask.js"
+import { updateTask } from "./updateTask.js"
 
 const newTaskForm = document.querySelector('.tasks-form')
 const newTaskInput = document.querySelector('.tasks-form__input')
@@ -7,7 +8,7 @@ const tasksList = document.querySelector('.tasks-list')
 
 const addNewTask = (event) => {
 	event.preventDefault()
-	
+
 	const formData = new FormData(newTaskForm)
 
 	const newTask = {
@@ -28,6 +29,9 @@ const addNewTask = (event) => {
 	localStorage.setItem('tasks', JSON.stringify(listOfTasksCopy))
 	newTaskForm.reset()
 	newTaskInput.select()
+
+	const tasksListButtons = document.querySelectorAll('.tasks-list__button')
+	tasksListButtons.forEach((button) => updateTask(button))
 }
 
 export { addNewTask }

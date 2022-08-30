@@ -122,7 +122,7 @@ body {
 	&__input {
 		width: 100%;
 		padding: rem(5);
-		border: 0;
+		border: rem(1) rgba($color: #6246ea, $alpha: 0.2) solid;
 		border-radius: rem(4);
 		font-family: var(--font-medium);
 		font-size: rem(16);
@@ -131,7 +131,7 @@ body {
 			outline: rem(2) var(--color-accent-primary) solid;
 		}
 		&:disabled {
-			border: 0;
+			border: rem(1) rgba(0, 0, 0, 0) solid;
 			background: transparent;
 			color: var(--color-textr-primary);
 		}
