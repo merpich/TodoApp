@@ -122,16 +122,17 @@ body {
 	&__input {
 		width: 100%;
 		padding: rem(5);
-		border: rem(1) rgba($color: #6246ea, $alpha: 0.2) solid;
+		border: 0;
 		border-radius: rem(4);
 		font-family: var(--font-medium);
 		font-size: rem(16);
 		font-weight: 500;
+		box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
 		&:focus {
 			outline: rem(2) var(--color-accent-primary) solid;
 		}
 		&:disabled {
-			border: rem(1) rgba(0, 0, 0, 0) solid;
+			box-shadow: none;
 			background: transparent;
 			color: var(--color-textr-primary);
 		}

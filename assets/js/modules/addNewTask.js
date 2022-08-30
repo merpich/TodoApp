@@ -1,37 +1,37 @@
-import { getData } from "../libs/utilities.js"
+import { getData, setData } from "../libs/utilities.js"
 import { showTask } from "../libs/showTask.js"
 import { updateTask } from "./updateTask.js"
 
-const newTaskForm = document.querySelector('.tasks-form')
-const newTaskInput = document.querySelector('.tasks-form__input')
-const tasksList = document.querySelector('.tasks-list')
+import {
+	newTaskFormElement,
+	newTaskInputElement,
+	listOfTasksElement
+} from "../libs/elements.js"
 
 const addNewTask = (event) => {
 	event.preventDefault()
 
-	const formData = new FormData(newTaskForm)
+	const formData = new FormData(newTaskFormElement)
+	const listOfTasks = getData()
+	const listOfTasksCopy = listOfTasks.slice()
+	const taskId = 'task-' + listOfTasksCopy.length
 
-	const newTask = {
+	const task = {
+		id: taskId,
 		text: formData.get('task'),
 		completed: false
 	}
 
-	const listOfTasks = getData()
-	const listOfTasksCopy = listOfTasks.slice()
+	listOfTasksCopy.push(task)
+	setData('tasks', listOfTasksCopy)
 
-	listOfTasksCopy.push(newTask)
+	newTaskFormElement.reset()
+	newTaskInputElement.select()
 
-	const id = listOfTasksCopy.length - 1
+	const taskElement = showTask(task, listOfTasksElement)
+	const button = taskElement.querySelector('.tasks-list__button')
 
-	newTask['id'] = 'task-' + id
-	showTask(newTask, tasksList)
-
-	localStorage.setItem('tasks', JSON.stringify(listOfTasksCopy))
-	newTaskForm.reset()
-	newTaskInput.select()
-
-	const tasksListButtons = document.querySelectorAll('.tasks-list__button')
-	tasksListButtons.forEach((button) => updateTask(button))
+	updateTask(button)
 }
 
 export { addNewTask }

@@ -1,4 +1,4 @@
-const showTask = (task,  listOfTasks) => {
+const showTask = (task,  listOfTasksElement) => {
 	const taskElement = document.createElement('li')
 
 	taskElement.classList.add('tasks-list__item')
@@ -7,7 +7,7 @@ const showTask = (task,  listOfTasks) => {
 			<label class="tasks-list__status">
 				<input type="checkbox">
 				<svg class="tasks-list__checkbox">
-					<use xlink:href="./assets/icons/sprites.svg#check"></use>
+					<use xlink:href="./assets/icons/sprites.svg#save"></use>
 				</svg>
 			</label>
 			<input class="tasks-list__input" type="text" name="task" value="${task.text}" data-status="${task.completed}" disabled>
@@ -18,7 +18,9 @@ const showTask = (task,  listOfTasks) => {
 			</button>
 		</form>`
 
-	listOfTasks.append(taskElement)
+	listOfTasksElement.append(taskElement)
+
+	return taskElement
 }
 
 export { showTask }
