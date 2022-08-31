@@ -1,8 +1,8 @@
 import { showTask } from "./libs/showTask.js"
-import { getData } from "./libs/utilities.js"
+import { getData, showTools } from "./libs/utilities.js"
 import {
-	newTaskFormElement,
-	listOfTasksElement
+	newTaskForm,
+	listOfTasksElement,
 } from "./libs/elements.js"
 
 import { addNewTask } from "./modules/addNewTask.js"
@@ -13,10 +13,12 @@ try {
 	const listOfTasks = getData()
 	listOfTasks.forEach((task) => showTask(task, listOfTasksElement))
 
-	const tasksListButtons = document.querySelectorAll('.tasks-list__button')
-	tasksListButtons.forEach((button) => updateTask(button))
+	const buttonsMore = document.querySelectorAll('.tasks-list__button[data-role=more]')
+	const buttonsEdit = document.querySelectorAll('.tasks-list__button[data-role=edit]')
+	buttonsMore.forEach((button) => showTools(button))
+	buttonsEdit.forEach((button) => updateTask(button))
 
-	newTaskFormElement.addEventListener('submit', (event) => addNewTask(event))
+	newTaskForm.addEventListener('submit', (event) => addNewTask(event))
 
 } catch(error) {
 	console.log(error)

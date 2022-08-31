@@ -13,4 +13,14 @@ const setData = (name, data) => {
 	localStorage.setItem(name, JSON.stringify(data))
 }
 
-export { getData, setData }
+const showTools = (button) => {
+	const buttonTools = button.nextElementSibling
+
+	button.addEventListener('click', (event) => {
+		event.preventDefault()
+		button.classList.toggle('is-active')
+		buttonTools.classList.toggle('is-hidden')
+	})
+}
+
+export { getData, setData, showTools }

@@ -1,16 +1,17 @@
-const updateTaskForm = (input, button, status) => {
-	button.setAttribute('data-status', status)
+const updateTaskForm = (input, button, role, text) => {
+	button.setAttribute('data-role', role)
 	button.innerHTML = 
-		`<svg class="tasks-list__icon tasks-list__icon_${status}">
-			<use xlink:href="./assets/icons/sprites.svg#${status}"></use>
-		</svg>`
+		`<svg class="tasks-list__icon tasks-list__icon_${role}">
+			<use xlink:href="./assets/icons/sprites.svg#${role}"></use>
+		</svg>
+		<span class="tasks-list__tool">${text}</span>`
 
-	if (status === 'save') {
+	if (role === 'save') {
 		input.removeAttribute('disabled')
 		input.focus()
 	}
 
-	if (status === 'edit') {
+	if (role === 'edit') {
 		input.setAttribute('disabled', 'disabled')
 	}
 }

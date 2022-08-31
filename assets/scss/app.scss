@@ -11,6 +11,11 @@ body {
 	color: var(--color-textr-primary);
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+	transition: all 5000s ease-in-out 0s;
+}
 
 .app {
 	display: grid;
@@ -79,6 +84,7 @@ body {
 	box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
 	// .tasks-list__item
 	&__item {
+		position: relative;
 		padding: rem(5) 0;
 		&:not(:last-child) {
 			border-bottom: rem(1) rgba($color: #6246ea, $alpha: 0.1) solid;
@@ -102,8 +108,8 @@ body {
 			left: 0;
 			top: 0;
 			appearance: none;
-			&:hover + .tasks-list__checkbox {
-				stroke: rgba($color: #6246ea, $alpha: 0.5);
+			&:focus-visible + .tasks-list__checkbox {
+				outline: rem(2) var(--color-accent-primary) solid;
 			}
 			&:checked + .tasks-list__checkbox {
 				stroke: var(--color-accent-primary);
@@ -122,37 +128,59 @@ body {
 	&__input {
 		width: 100%;
 		padding: rem(5);
-		border: 0;
+		border: rem(1) rgba($color: #6246ea, $alpha: 0.2) solid;
 		border-radius: rem(4);
 		font-family: var(--font-medium);
 		font-size: rem(16);
 		font-weight: 500;
-		box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
 		&:focus {
 			outline: rem(2) var(--color-accent-primary) solid;
 		}
 		&:disabled {
 			box-shadow: none;
 			background: transparent;
+			border: rem(1) rgba($color: #6246ea, $alpha: 0) solid;
 			color: var(--color-textr-primary);
+		}
+		&[data-completed='true'] {
+			text-decoration: line-through;
+			color: rgba($color: #2b2c34, $alpha: 0.5);
 		}
 	}
 	// .tasks-list__button
 	&__button {
+		position: relative;
 		display: flex;
 		align-items: center;
+		gap: 0 rem(10);
 		min-height: rem(40);
 		padding: rem(10) rem(15);
 		border: 0;
 		background: transparent;
-		&:hover .tasks-list__icon {
-			stroke: var(--color-accent-secondary);
+		&.is-active {
+			z-index: 15;
+		}
+		&:hover {
+			& .tasks-list__icon {
+				stroke: var(--color-accent-secondary);
+			}
+			& .tasks-list__tool {
+				color: var(--color-accent-secondary);
+			}
+		}
+		&:hover .tasks-list__icon_more {
+			stroke: var(--color-accent-primary);
 		}
 	}
 	// .tasks-list__icon
 	&__icon {
 		stroke: var(--color-text-primary);
 		transition: stroke 0.2s ease 0s;
+		// .tasks-list__icon_more
+		&_more {
+			width: rem(4);
+			height: rem(20);
+		}
 		// .tasks-list__icon_edit
 		&_edit {
 			width: rem(18);
@@ -163,43 +191,31 @@ body {
 			width: rem(18);
 			height: rem(14);
 		}
-	}
-}
-
-.tasks-tools {
-	display: flex;
-	justify-content: flex-end;
-	margin: rem(-10) 0;
-	// .tasks-tools__button
-	&__button {
-		display: flex;
-		align-items: center;
-		min-height: rem(40);
-		padding: rem(10);
-		border: 0;
-		background: transparent;
-		&:hover {
-			& .tasks-tools__icon_done {
-				stroke: var(--color-accent-primary);
-			}
-			& .tasks-tools__icon_delete {
-				stroke: var(--color-accent-secondary);
-			}
-		}
-	}
-	// .tasks-tools__icon
-	&__icon {
-		stroke: var(--color-text-primary);
-		transition: stroke 0.2s ease 0s;
-		// .tasks-tools__icon_done
-		&_done {
-			width: rem(26);
-			height: rem(14);
-		}
-		// .tasks-tools__icon_delete
+		// .tasks-list__icon_save
 		&_delete {
 			width: rem(18);
 			height: rem(18);
 		}
+	}
+	// .tasks-list__tools
+	&__tools {
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 10;
+		padding: 0 rem(40) 0 0;
+		background: var(--color-bg-secondary);
+		border-radius: rem(4);
+		box-shadow: 0 0 rem(8) rgba($color: #6246ea, $alpha: 0.1);
+		&.is-hidden {
+			display: none;
+		}
+	}
+	// // .tasks-list__tool
+	&__tool {
+		font-family: var(--font-medium);
+		font-size: rem(14);
+		font-weight: 500;
+		transition: color 0.2s ease 0s;
 	}
 }

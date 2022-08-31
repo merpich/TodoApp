@@ -1,17 +1,17 @@
-import { getData, setData } from "../libs/utilities.js"
+import { getData, setData, showTools } from "../libs/utilities.js"
 import { showTask } from "../libs/showTask.js"
 import { updateTask } from "./updateTask.js"
 
 import {
-	newTaskFormElement,
-	newTaskInputElement,
+	newTaskForm,
+	newTaskInput,
 	listOfTasksElement
 } from "../libs/elements.js"
 
 const addNewTask = (event) => {
 	event.preventDefault()
 
-	const formData = new FormData(newTaskFormElement)
+	const formData = new FormData(newTaskForm)
 	const listOfTasks = getData()
 	const listOfTasksCopy = listOfTasks.slice()
 	const taskId = 'task-' + listOfTasksCopy.length
@@ -25,13 +25,15 @@ const addNewTask = (event) => {
 	listOfTasksCopy.push(task)
 	setData('tasks', listOfTasksCopy)
 
-	newTaskFormElement.reset()
-	newTaskInputElement.select()
+	newTaskForm.reset()
+	newTaskInput.select()
 
 	const taskElement = showTask(task, listOfTasksElement)
-	const button = taskElement.querySelector('.tasks-list__button')
+	const buttonMore = taskElement.querySelector('.tasks-list__button[data-role=more]')
+	const buttonEdit = taskElement.querySelector('.tasks-list__button[data-role=edit]')
 
-	updateTask(button)
+	showTools(buttonMore)
+	updateTask(buttonEdit)
 }
 
 export { addNewTask }
