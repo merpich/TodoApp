@@ -10,34 +10,33 @@ const updateTask = (button) => {
 	const formId = form.id
 	const input = form.querySelector('.tasks-list__input')
 
-	if (button.getAttribute('data-role') === 'edit') {
-		button.addEventListener('click', (event) => {
-			event.preventDefault()
+	
+	button.addEventListener('click', (event) => {
+		event.preventDefault()
 
-			if (button.getAttribute('data-role') === 'edit') {
-				buttonTools.classList.add('is-hidden')
-				buttonMore.classList.remove('is-active')
+		if (button.getAttribute('data-role') === 'edit') {
+			buttonTools.classList.add('is-hidden')
+			buttonMore.classList.remove('is-active')
 
-				updateTaskForm(input, button, 'save', 'Сохранить')
-			} else {
-				const listOfTasks = getData()
-				const listOfTasksCopy = listOfTasks.slice()
+			updateTaskForm(input, button, 'save', 'Сохранить')
+		} else {
+			const listOfTasks = getData()
+			const listOfTasksCopy = listOfTasks.slice()
 
-				const formData = new FormData(form)
-				const formTask = formData.get('task')
+			const formData = new FormData(form)
+			const formTask = formData.get('task')
 
-				listOfTasksCopy.forEach((task, id) => {
-					if (task.id === formId) {
-						task.text = formTask
-						listOfTasksCopy[id] = task
-						setData('tasks', listOfTasksCopy)
-					}
-				})
+			listOfTasksCopy.forEach((task, id) => {
+				if (task.id === formId) {
+					task.text = formTask
+					listOfTasksCopy[id] = task
+					setData('tasks', listOfTasksCopy)
+				}
+			})
 
-				updateTaskForm(input, button, 'edit', 'Редактировать')
-			}
-		})
-	}
+			updateTaskForm(input, button, 'edit', 'Редактировать')
+		}
+	})
 }
 
 export { updateTask }
