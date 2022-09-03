@@ -1,11 +1,16 @@
 const showTask = (task,  listOfTasksElement) => {
 	const taskElement = document.createElement('li')
 
+	let checked = ''
+	if (task.completed) {
+		checked = 'checked'
+	}
+
 	taskElement.classList.add('tasks-list__item')
 	taskElement.innerHTML = 
 		`<form class="tasks-list__form" action="#" id="${task.id}">
-			<label class="tasks-list__status" data-completed="${task.completed}">
-				<input type="checkbox">
+			<label class="tasks-list__status">
+				<input type="checkbox" ${checked}>
 				<svg class="tasks-list__checkbox">
 					<use xlink:href="./assets/icons/sprites.svg#save"></use>
 				</svg>
