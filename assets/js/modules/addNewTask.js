@@ -1,6 +1,7 @@
 import { getData, setData, showTools } from "../libs/utilities.js"
 import { showTask } from "../libs/showTask.js"
 import { updateTask } from "./updateTask.js"
+import { removeTask } from "./removeTask.js"
 
 import {
 	newTaskForm,
@@ -31,9 +32,11 @@ const addNewTask = (event) => {
 	const taskElement = showTask(task, listOfTasksElement)
 	const buttonMore = taskElement.querySelector('.tasks-list__button[data-role=more]')
 	const buttonEdit = taskElement.querySelector('.tasks-list__button[data-role=edit]')
+	const buttonDelete = taskElement.querySelector('.tasks-list__button[data-role=delete]')
 
 	showTools(buttonMore)
 	updateTask(buttonEdit)
+	removeTask(buttonDelete)
 }
 
 export { addNewTask }
