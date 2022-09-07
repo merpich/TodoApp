@@ -1,5 +1,5 @@
-import { getData, setData } from "../libs/utilities.js"
-import { updateTaskForm } from "../libs/updateTaskForm.js"
+import { getData, setData } from '../libs/utilities.js'
+import { updateTaskForm } from '../libs/updateTaskForm.js'
 
 const updateTask = (button) => {
 
@@ -10,7 +10,6 @@ const updateTask = (button) => {
 	const formId = form.id
 	const input = form.querySelector('.tasks-list__input')
 
-	
 	button.addEventListener('click', (event) => {
 		event.preventDefault()
 

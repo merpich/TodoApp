@@ -15,11 +15,23 @@ const setData = (name, data) => {
 
 const showTools = (button) => {
 	const buttonTools = button.nextElementSibling
+	const buttonIcon = button.querySelector('.tasks-list__icon')
+	const buttonUse = button.querySelector('use')
+	const body = document.body
 
-	button.addEventListener('click', (event) => {
-		event.preventDefault()
-		button.classList.toggle('is-active')
-		buttonTools.classList.toggle('is-hidden')
+	body.addEventListener('click', (event) => {
+		if (event.target === button || event.target === buttonIcon || event.target === buttonUse) {
+			if (buttonTools.classList.contains('is-hidden')) {
+				button.classList.add('is-active')
+				buttonTools.classList.remove('is-hidden')
+			} else {
+				button.classList.remove('is-active')
+				buttonTools.classList.add('is-hidden')
+			}
+		} else if (event.target != buttonTools) {
+			button.classList.remove('is-active')
+			buttonTools.classList.add('is-hidden')
+		}
 	})
 }
 

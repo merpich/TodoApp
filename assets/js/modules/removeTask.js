@@ -1,8 +1,8 @@
-import { getData, setData } from "../libs/utilities.js";
-import { listOfTasksElement } from "../libs/elements.js";
+import { getData, setData } from '../libs/utilities.js';
 
 const removeTask = (button) => {
 
+	const listOfTasksElement = document.querySelector('.tasks-list')
 	const form = button.parentElement.parentElement
 	const formID = form.id
 

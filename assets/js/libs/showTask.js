@@ -1,4 +1,14 @@
-const showTask = (task,  listOfTasksElement) => {
+const showTask = (task) => {
+	let listOfTasksElement = document.querySelector('.tasks-list')
+
+	if (listOfTasksElement === null) {
+		const tasks = document.querySelector('.tasks')
+		listOfTasksElement = document.createElement('ul')
+		listOfTasksElement.classList.add('tasks-list')
+
+		tasks.append(listOfTasksElement)
+	}
+
 	const taskElement = document.createElement('li')
 
 	let checked = ''
@@ -7,7 +17,7 @@ const showTask = (task,  listOfTasksElement) => {
 	}
 
 	taskElement.classList.add('tasks-list__item')
-	taskElement.innerHTML = 
+	taskElement.innerHTML =
 		`<form class="tasks-list__form" action="#" id="${task.id}">
 			<label class="tasks-list__status">
 				<input type="checkbox" ${checked}>

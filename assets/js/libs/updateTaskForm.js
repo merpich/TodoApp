@@ -1,6 +1,6 @@
 const updateTaskForm = (input, button, role, text) => {
 	button.setAttribute('data-role', role)
-	button.innerHTML = 
+	button.innerHTML =
 		`<svg class="tasks-list__icon tasks-list__icon_${role}">
 			<use xlink:href="./assets/icons/sprites.svg#${role}"></use>
 		</svg>

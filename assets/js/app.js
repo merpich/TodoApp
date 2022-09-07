@@ -1,19 +1,15 @@
-import { showTask } from "./libs/showTask.js"
-import { getData, showTools } from "./libs/utilities.js"
-import {
-	newTaskForm,
-	listOfTasksElement,
-} from "./libs/elements.js"
-
-import { addNewTask } from "./modules/addNewTask.js"
-import { updateTask } from "./modules/updateTask.js"
-import { removeTask } from "./modules/removeTask.js"
-import { completeTask } from "./modules/completeTask.js"
+import { showTask } from './libs/showTask.js'
+import { getData, showTools } from './libs/utilities.js'
+import { addNewTask } from './modules/addNewTask.js'
+import { updateTask } from './modules/updateTask.js'
+import { removeTask } from './modules/removeTask.js'
+import { completeTask } from './modules/completeTask.js'
 
 try {
+	const newTaskForm = document.querySelector('.tasks-form')
 
 	const listOfTasks = getData()
-	listOfTasks.forEach((task) => showTask(task, listOfTasksElement))
+	listOfTasks.forEach((task) => showTask(task))
 
 	const buttonsMore = document.querySelectorAll('.tasks-list__button[data-role=more]')
 	const buttonsEdit = document.querySelectorAll('.tasks-list__button[data-role=edit]')

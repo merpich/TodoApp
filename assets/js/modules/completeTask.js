@@ -1,4 +1,4 @@
-import { getData, setData } from "../libs/utilities.js"
+import { getData, setData } from '../libs/utilities.js'
 
 const completeTask = (label) => {
 

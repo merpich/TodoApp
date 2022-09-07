@@ -1,17 +1,14 @@
-import { getData, setData, showTools } from "../libs/utilities.js"
-import { showTask } from "../libs/showTask.js"
-import { updateTask } from "./updateTask.js"
-import { removeTask } from "./removeTask.js"
-import { completeTask } from "./completeTask.js"
-
-import {
-	newTaskForm,
-	newTaskInput,
-	listOfTasksElement
-} from "../libs/elements.js"
+import { getData, setData, showTools } from '../libs/utilities.js'
+import { showTask } from '../libs/showTask.js'
+import { updateTask } from './updateTask.js'
+import { removeTask } from './removeTask.js'
+import { completeTask } from './completeTask.js'
 
 const addNewTask = (event) => {
 	event.preventDefault()
+
+	const newTaskForm = document.querySelector('.tasks-form')
+	const newTaskInput = document.querySelector('.tasks-form__input')
 
 	const formData = new FormData(newTaskForm)
 	const listOfTasks = getData()
@@ -30,7 +27,7 @@ const addNewTask = (event) => {
 	newTaskForm.reset()
 	newTaskInput.select()
 
-	const taskElement = showTask(task, listOfTasksElement)
+	const taskElement = showTask(task)
 	const buttonMore = taskElement.querySelector('.tasks-list__button[data-role=more]')
 	const buttonEdit = taskElement.querySelector('.tasks-list__button[data-role=edit]')
 	const buttonDelete = taskElement.querySelector('.tasks-list__button[data-role=delete]')
