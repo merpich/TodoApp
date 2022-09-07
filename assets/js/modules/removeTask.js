@@ -1,4 +1,5 @@
 import { getData, setData } from "../libs/utilities.js";
+import { listOfTasksElement } from "../libs/elements.js";
 
 const removeTask = (button) => {
 
@@ -17,8 +18,12 @@ const removeTask = (button) => {
 			if (task.id === formID) {
 				taskElement.remove()
 
-				listOfTasksCopy.splice(id, 1)
+				listOfTasksCopy.splice(id, 1)				
 				setData('tasks', listOfTasksCopy)
+
+				if (listOfTasksCopy.length < 1) {
+					listOfTasksElement.remove()
+				}
 			}
 		})
 	})
